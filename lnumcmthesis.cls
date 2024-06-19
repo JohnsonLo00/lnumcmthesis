@@ -74,6 +74,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 
 % --------------- 页面样式 --------------- %
+\RequirePackage[table]{xcolor} %颜色定制
 \RequirePackage{fancyhdr} %定制页眉页脚
 \RequirePackage{geometry} %定制页面
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headsep=0.5cm}
@@ -220,7 +221,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % --------------- 杂项 --------------- %
 \RequirePackage{titletoc} % 设置目录样式（但辽省赛不需要目录）
 \RequirePackage{comment} % 提供注释环境
-\RequirePackage[table]{xcolor} %颜色定制
 \definecolor{coverblue}{RGB}{79,129,189}
 \RequirePackage{lipsum, zhlipsum} %随机文本（用于调试）
 % ======================================== %

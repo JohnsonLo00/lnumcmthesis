@@ -1,0 +1,23 @@
+
+\section{符号说明}
+
+% 跨页表格
+\setlength{\tabcolsep}{5mm}{%设置列间距
+\begin{longtable}{ccc} %可在此使用p{数值}设置列宽（注：p{...}默认居左表示）
+    %\caption{The List of Notation} \label{tab:Notiations} \\
+	\toprule
+	{\bf 符号} & {\bf 解释} & {\bf 单位}\\
+	\midrule
+    \endfirsthead %以上是首页表头
+    \midrule
+    {\bf 符号} & {\bf 解释} & {\bf 单位}\\
+    \midrule
+    \endhead %以上是通用表头
+    \midrule
+    \endfoot %以上是通用表尾
+    \bottomrule
+    \endlastfoot %以上是末页表尾，以下是表格正文
+    符号1 & 解释1 & 单位1 \\
+    符号2 & 解释2 &  \\
+    符号1 & 解释1 & 单位3 \\
+\end{longtable}}{} 

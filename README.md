@@ -15,7 +15,7 @@ lnumcmthesis
 
 ## 模板介绍
 
-lnumcmthesis(**L**iao**n**ing **U**ndergraduate **M**athematical **C**ontest in **M**odeling **Thesis** Template)，即2024年辽宁省大学生数学建模竞赛论文模板，诞生于2024年春天前际、初步成熟于当年夏天。现将本模板发布，为苦于格式调试的参赛者提供多一种选择，尽可能让参赛者**不因为格式问题、“颜值”问题而提前退出竞争**.
+lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**athematical **C**ontest in **M**odeling)，即2024年辽宁省大学生数学建模竞赛论文模板，诞生于2024年春天前际、初步成熟于当年夏天。现将本模板发布，为苦于格式调试的参赛者提供多一种选择，尽可能让参赛者**不因为格式问题、“颜值”问题而提前退出竞争**.
 
 本模板尚未完全成熟，仍有诸多需要改进之处. 当读者在使用模板的过程中遇到bug或者格式问题，建议按照如下顺序寻求解决方案：
 

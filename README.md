@@ -39,11 +39,11 @@ lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**ath
 
 目前可从三个平台上获取到本模板：
 
--   [**GitHub**](https://github.com/JohnsonLo00/lnumcmthesis)
+-   [GitHub](https://github.com/JohnsonLo00/lnumcmthesis)
 
--   [**Gitee**](https://gitee.com/jhonson-lo/lnumcmthesis)
+-   [Gitee](https://gitee.com/jhonson-lo/lnumcmthesis)
 
--   [**Overleaf**]()
+-   [Overleaf](https://www.overleaf.com/latex/templates/lnumcmthesis-thesis-latex-template-for-liaoning-undergraduate-mathematical-contest-in-modeling/jjbhyxjqdtyg)
 
 ## 模板运行前的配置
 

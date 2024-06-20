@@ -22,7 +22,7 @@ lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**ath
 1.  查阅文件`gbk_of_lnumcmthesis.pdf`；
 2.  查阅相关手册（e.g. texdoc）
 3.  Retrieving on the Internet；
-4.  GitHub：将具体情况说明提交到[Issues](https://github.com/JohnsonLo00/dlmubachelorthesis/issues)；
+4.  GitHub：将具体情况说明提交到[Issues](https://github.com/JohnsonLo00/lnumcmthesis/issues)；
 5.  联系JL，提供具体情况说明。
 
 此外，本模板处于受维护状态，下一步大致的更新方向如下：

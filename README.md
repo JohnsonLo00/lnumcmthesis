@@ -1,21 +1,21 @@
 
 lnumcmthesis
 ===
-**2023年辽宁省大学生数学建模竞赛论文模板**
+**2024年辽宁省大学生数学建模竞赛论文模板**
 
 **JL**, [yhlaozero2@163.com](yhlaozero2@163.com)
-**v1.0(2024/06)**
+**v2.0(2024/07)**
 
 ***
 
 #### Overview
 
-现发布非官方版2023年辽宁省大学生数学建模竞赛论文模板。本模板参照《关于辽宁省2024年数学建模竞赛的报名通知》《全国大学生数学建模竞赛论文格式规范（2023）》进行设计，适用于辽宁省数学建模竞赛论文的编写，也供各位读者研究使用。
+现发布非官方版2024年辽宁省大学生数学建模竞赛论文模板。本模板参照《关于辽宁省2024年数学建模竞赛的报名通知》《全国大学生数学建模竞赛论文格式规范（2023）》进行设计，适用于辽宁省数学建模竞赛论文的编写，也供各位读者研究使用。
 
 
 ## 模板介绍
 
-lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**athematical **C**ontest in **M**odeling)，即2023年辽宁省大学生数学建模竞赛论文模板，诞生于2024年春天前际、初步成熟于当年夏天。现将本模板发布，为苦于格式调试的参赛者提供多一种选择，尽可能让参赛者**不因为格式问题、“颜值”问题而提前退出竞争**.
+lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**athematical **C**ontest in **M**odeling)，即2024年辽宁省大学生数学建模竞赛论文模板，诞生于2024年春天前际、初步成熟于当年夏天。现将本模板发布，为苦于格式调试的参赛者提供多一种选择，尽可能让参赛者**省去繁琐的格式调试、专注于论文内容的编写**.
 
 本模板尚未完全成熟，仍有诸多需要改进之处. 当读者在使用模板的过程中遇到bug或者格式问题，建议按照如下顺序寻求解决方案：
 
@@ -33,7 +33,7 @@ lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**ath
 
 ## 模板许可说明
 
-本模板的发布遵守[The LaTeX Project Public License（LPPL）](https://www.latex-project.org/lppl/lppl-1-3c/)。
+本模板的发布遵守[The LaTeX Project Public License（LPPL）](https://www.latex-project.org/lppl/lppl-1-3c/)。禁止任何人将本模板用于任何商业用途。
 
 ## 模板获取方式
 
@@ -43,7 +43,7 @@ lnumcmthesis(**Thesis** Template for **L**iao**n**ing **U**ndergraduate **M**ath
 
 -   [Gitee](https://gitee.com/jhonson-lo/lnumcmthesis)
 
--   [Overleaf](https://www.overleaf.com/latex/templates/lnumcmthesis-thesis-latex-template-for-liaoning-undergraduate-mathematical-contest-in-modeling/jjbhyxjqdtyg)
+-   [Overleaf]()
 
 ## 模板运行前的配置
 
@@ -58,7 +58,7 @@ JL已通过电脑本地和OverLeaf两种方式成功实现了本模板的使用�
 
 - 电脑本地：Windows10, TeXLive2024, WinEdit/TeXstudio, SumatraPDF
 
-- OverLeaf：普通项目，编译器选择XeLaTeX.
+- OverLeaf：普通项目，编译器选择XeLaTeX，主文档选择 main.tex
 
 其他的方案组合尚未实践，如遇问题，必要时可提交具体情况说明。
 
@@ -67,15 +67,19 @@ JL已通过电脑本地和OverLeaf两种方式成功实现了本模板的使用�
 模板压缩包内部的文件组成如下：
 
 ```
-codes/ 用于放置源代码文件. 需写入论文中的代码可以通过文件导入的命令来实现写入
-figures/ 用于放置图片文件. 需插入论文中的图片可以通过文件导入的命令来实现插入
-- signature/ 用于放置封面页的队员签名截图
-- fig_chx/ 用于放置第x章内的图片文件
-mainbody/ 用于放置正文各章节的子tex文件. 论文的每个章节均可分为不同的tex文件进行编写，最后再汇总导入一个tex文件中(即文件main.tex)
-- aabstract.tex：摘要
-- chx.tex：第x章
-- appendiceS.tex：附录
-packages/ 用于放置第三方宏包文件. 一部分宏包不跟随LaTeX 发行版下载到本地，因此需要另外导入
+|- codes/ 用于放置源代码文件. 需写入论文中的代码可以通过文件导入的命令
+|         来实现写入
+|- figures/ 用于放置图片文件. 需插入论文中的图片可以通过文件导入的命令
+|           来实现插入
+|-- fig_chx/ 用于放置第x章内的图片文件
+|- mainbody/ 用于放置正文各章节的子tex文件. 论文的每个章节均可分为
+|            不同的tex文件进行编写，最后再汇总导入一个tex文件中(即
+|            文件main.tex)
+|-- aabstract.tex：摘要
+|-- chx.tex：第x章
+|-- appendiceS.tex：附录
+|- packages/ 用于放置第三方宏包文件. 一部分宏包不跟随LaTeX 发行版下载到本地，
+          因此需要另外导入
 gbk_of_lnumcmthesis.pdf：本模板的使用指北
 lnumcmthesis.cls：本模板的文档类文件
 LICENSE：The LaTeX Project Public License（LPPL）
@@ -84,4 +88,18 @@ main.pdf：由main.tex编译生成的PDF文档
 refs.bib：参考文献数据库文件. 参考文献列表可以通过bib文件导入的命令来生成
 ```
 
+## 修改日志
 
+#### v2.0, 2024-07-11
+
+-   取消了往年沿用的封面页，引入了2024年竞赛组委会指定的摘要专用页
+
+-   在主文件main.tex中加入了算法伪代码的示例
+
+-   引入了附录中的支撑材料列表
+
+-   优化了其他相关功能
+
+#### v1.0, 2024-06-10
+
+-   创建本模板

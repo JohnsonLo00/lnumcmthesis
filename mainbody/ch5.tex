@@ -26,15 +26,42 @@
 
 \subsection{对问题2的求解}
 
-\begin{gather}\label{equ:规划模型}
-\min\quad{f(\bk{x})} \\
-\text{s.t.}\quad\begin{cases}
-    a \leq x_i\leq b &, j=1,2,\cdots ,\alpha \\
-	\max\limits_{j=1,2,\cdots ,\alpha}{\{A_{i,j}\}} \leq 24 &, i=1,2,\cdots ,\beta_1\\
-	\max\limits_{j=1,2,\cdots ,\alpha}{\{B_{i,j}\}} \leqslant 24 &, i=\beta_1, \beta_1+1,\cdots, \beta_2 \\
-    \end{cases}
-\end{gather}
+{\bf 伪代码的使用示例如下所示。}
 
+\begin{algorithm}%[H] %若想要使得该伪代码显示在当前文本下方，则添加可选参数H
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up} % 定义快捷变量，后续使用时只需：反斜杠+变量名
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress} % 定义函数，后续使用时只需：反斜杠+函数名
+\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出} %此处可自定义输入、输入的名称格式
+
+在此处添加不带编号的内容（若无，则将该行注释即可）。\\
+\LinesNumbered % 使下列算法描述带行号
+\Input{A bitmap $Im$ of size $w\times l$} % 输入
+\Output{A partition of the bitmap} % 输出
+\BlankLine
+
+\emph{special treatment of the first line}\;
+\For{$i\leftarrow 2$ \KwTo $l$}{
+  \emph{special treatment of the first element of line $i$}\;
+  \For{$j\leftarrow 2$ \KwTo $w$}{\label{forins}
+    \Left$\leftarrow$ \FindCompress{$Im[i,j-1]$}\;
+    \Up$\leftarrow$ \FindCompress{$Im[i-1,]$}\;
+    \This$\leftarrow$ \FindCompress{$Im[i,j]$}\;
+    \If( \tcp*[h]{此处添加注释：O(\Left,\This)==1} ){\Left compatible with \This}{\label{lt} % \tcp*[h]{...}表示非对齐的注释
+      \lIf{\Left $<$ \This}{\Union{\Left,\This}} %含else...的if语句用命令\lIf
+      \lElse{\Union{\This,\Left}}
+    }
+    \If(\tcp*[f]{O(\Up,\This)==1}){\Up compatible with \This}{\label{ut} % \tcp*[f]{...}表示居右对齐的注释
+      \lIf(\tcp*[f]{再次用Union函数}){\Up $<$ \This}{\Union{\Up,\This}}
+      \tcp{\This is put under \Up to keep tree as flat as possible}\label{cmt} % \tcp{...}表示行内的注释
+      \lElse{\Union{\This,\Up}}\tcp*[h]{\This linked to \Up}\label{lelse}
+    }
+  }
+  \lForEach{element $e$ of the line $i$}{\FindCompress{p}}
+}
+\caption{不相交分解(disjoint decomposition)}\label{pcode: 不相交分解} %伪代码对应算法的标题及其引用标签
+\end{algorithm}
+
+引用时的格式为：算法\ref{pcode: 不相交分解}实现了...。
 
 \subsubsection{结果求解与分析}
 
@@ -60,6 +87,15 @@ x_1^{n-1} & x_2^{n-1} & \ldots & x_n^{n-1}
 % -------------------- 问题 4 -------------------- %
 
 \subsection{对问题4的求解}
+
+\begin{gather}\label{equ:规划模型}
+\min\quad{f(\bk{x})} \\
+\text{s.t.}\quad\begin{cases}
+    a \leq x_i\leq b &, j=1,2,\cdots ,\alpha \\
+	\max\limits_{j=1,2,\cdots ,\alpha}{\{A_{i,j}\}} \leq 24 &, i=1,2,\cdots ,\beta_1\\
+	\max\limits_{j=1,2,\cdots ,\alpha}{\{B_{i,j}\}} \leqslant 24 &, i=\beta_1, \beta_1+1,\cdots, \beta_2 \\
+    \end{cases}
+\end{gather}
 
 \subsubsection{结果求解与分析}
 

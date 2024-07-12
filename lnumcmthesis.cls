@@ -16,7 +16,7 @@
 
 % --------------- 全局设置 --------------- %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{lnumcmthesis}[2024/06/10 v1.0 Unofficial LaTeX Template for Liaoning Undergraduate Mathematical Contest in Modeling]
+\ProvidesClass{lnumcmthesis}[2024/07/11 v2.0 Unofficial LaTeX Template for Liaoning Undergraduate Mathematical Contest in Modeling]
 % ======================================== %
 
 
@@ -42,7 +42,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % --------------- ctex宏集设置 --------------- %
 \RequirePackage[UTF8, heading=true, zihao = -4]{ctex}
 \ctexset{
-  abstractname = {\zihao{3}摘~ 要},
+  abstractname = {\zihao{-3}摘~ 要},
   bibname = \hfill{\zihao{3}参~ 考~ 文~ 献}\hfill,
   section = {
     format = {\centering\zihao{3}\bfseries},
@@ -77,15 +77,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage[table]{xcolor} %颜色定制
 \RequirePackage{fancyhdr} %定制页眉页脚
 \RequirePackage{geometry} %定制页面
-\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headsep=0.5cm}
-
-\pagestyle{fancy}
-\lhead{} %在'heading=true'下，默认左页眉为当前二级标题名称，因此要赋值为空
-\rhead{} %'heading=true'下，默认右页眉为当前一级标题名称，，因此要赋值为空
-\chead{}
-\cfoot{\zihao{-5} \thepage}
-\renewcommand{\headrulewidth}{0.4pt} %疑惑：setlength命令不起作用
-\renewcommand{\footrulewidth}{0pt}
+\geometry{top=3.0cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headsep=1.5cm}
 % ======================================== %
 
 
@@ -252,102 +244,65 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{array} %【与表格相关】
 %% ============================================================ %
 
-
 %% -------------------- 变量预定义 -------------------- %
 \newcommand{\ttleinMAINBODY}{~} %【论文标题】
-\newcommand{\lnumcmthesis@tokens@school}{~} %【参赛学校】
 \newcommand{\lnumcmthesis@tokens@tihao}{~} %【参赛题号】
 \newcommand{\lnumcmthesis@tokens@bianhao}{~} %【校内编号】
-\newcommand{\lnumcmthesis@tokens@membera}{~} %【队员姓名A】
-\newcommand{\lnumcmthesis@tokens@memberb}{~} %【队员姓名B】
-\newcommand{\lnumcmthesis@tokens@memberc}{~} %【队员姓名C】
-\newcommand{\lnumcmthesis@tokens@supervisor}{~} %【指导教师】
-\newcommand{\lnumcmthesis@tokens@yearinput}{XXXX} %【年（日期）】
-\newcommand{\lnumcmthesis@tokens@monthinput}{XX} %【月（日期）】
-\newcommand{\lnumcmthesis@tokens@dayinput}{XX} %【日（日期）】
 %% ============================================================ %
-
 
 %% -------------------- 正式变量定义 -------------------- %
 \newcommand{\ttle}[1]{\renewcommand{\ttleinMAINBODY}{#1}} %【论文标题】
-\newcommand{\school}[1]{\renewcommand{\lnumcmthesis@tokens@school}{#1}} %【参赛学校】
 \newcommand{\tihao}[1]{\renewcommand{\lnumcmthesis@tokens@tihao}{#1}} %【参赛题号】
 \newcommand{\bianhao}[1]{\renewcommand{\lnumcmthesis@tokens@bianhao}{#1}} %【校内编号】
-\newcommand{\membera}[1]{\renewcommand{\lnumcmthesis@tokens@membera}{#1}} %【队员姓名A】
-\newcommand{\memberb}[1]{\renewcommand{\lnumcmthesis@tokens@memberb}{#1}} %【队员姓名B】
-\newcommand{\memberc}[1]{\renewcommand{\lnumcmthesis@tokens@memberc}{#1}} %【队员姓名C】
-\newcommand{\supervisor}[1]{\renewcommand{\lnumcmthesis@tokens@supervisor}{#1}} %【指导教师】
-\newcommand{\yearinput}[1]{\renewcommand{\lnumcmthesis@tokens@yearinput}{#1}} %【年（日期）】
-\newcommand{\monthinput}[1]{\renewcommand{\lnumcmthesis@tokens@monthinput}{#1}} %【月（日期）】
-\newcommand{\dayinput}[1]{\renewcommand{\lnumcmthesis@tokens@dayinput}{#1}} %【日（日期）】
 %% ============================================================ %
 
 % ================================================================================ %
 
 
-% ------------------------- 封面页的导入 ------------------------- %
-\newcommand{\makecoverpage}{
-  \thispagestyle{empty} %【无页眉页脚】
-
-~\vspace{1ex}
-
-\begin{flushright}
-{\selectfont\fontsize{22}{0pt}\bf 封面}
-\end{flushright}{}\vspace{44pt}
-
-\begin{center}
-{\selectfont\fontsize{22}{0pt}\bf\lnumcmthesis@tokens@yearinput 年辽宁省大学生数学建模论文}
-\end{center}{}\vspace{42.0pt}
-
-\begin{table}[H]
-    \renewcommand\arraystretch{1.5}
-    \centering
-    \arrayrulecolor{coverblue}
-    \begin{tabular}[lc]
-      {
-      >{\fontsize{10.5pt}{0pt}\selectfont}m{7.5cm}
-      >{\centering\arraybackslash\fontsize{10.5pt}{0pt}\selectfont} m{5.5cm}
-      }
-      {\bf\color{coverblue}参赛学校(完整的学校全称，不含院系名)：} & {\bf\lnumcmthesis@tokens@school} \\
-      \hline\vspace{21.0pt}
-      {\bf\color{coverblue}参赛题号(从A/B/C中选择一项填写)：} & {\bf\lnumcmthesis@tokens@tihao} \\
-      \hline\vspace{21.0pt}
-      {\bf\color{coverblue}校内编号(与报名表上序号一致)：} & {\bf\lnumcmthesis@tokens@bianhao} \\
-      \hline\vspace{21.0pt}
-      {\bf\color{coverblue}队员姓名(打印并签名)：1、} & {\bf\lnumcmthesis@tokens@membera} \\
-      \hline\vspace{21.0pt}
-      \hspace{111.5pt} {\bf\color{coverblue}2、} & {\bf\lnumcmthesis@tokens@memberb} \\
-      \hline\vspace{21.0pt}
-      \hspace{111.5pt} {\bf\color{coverblue}3、} & {\bf\lnumcmthesis@tokens@memberc} \\
-      \hline\vspace{21.0pt}
-      {\bf\color{coverblue}指导教师或指导教师组负责人(打印并签名)：} & {\bf\lnumcmthesis@tokens@supervisor} \\
-      \hline
-      \multicolumn{2}{c}{{\color{coverblue}\kaishu（指导教师签名意味着对参赛队的行为和论文的真实性负责）}}
-    \end{tabular}
-\end{table}{}\vspace{31.5pt}
-
-\begin{flushright}
-{\zihao{-4}\underline{\quad\lnumcmthesis@tokens@yearinput\quad}年\underline{\quad\lnumcmthesis@tokens@monthinput\quad}月\underline{\quad\lnumcmthesis@tokens@dayinput\quad}日}
-\end{flushright}
-\arrayrulecolor{black} %使封面页之后的表格线颜色恢复正常
-\newpage
-} %【\newcommand{\makecoverpage}】
-% ============================================================ %
-
-
 % --------------- 对sty,cls的命令的定制 --------------- %
 \RequirePackage{etoolbox}
 
-\apptocmd{\makecoverpage}{
-\pagestyle{plain} %摘要页设置为无页眉、有页脚的模式
-\pagenumbering{arabic} %从摘要页开始计数，且设为阿拉伯数字页码
+\AtBeginDocument{
 \renewcommand{\baselinestretch}{1.25}
-}{\typeout{succeeds: edit the style of page using package etoolbox}}{\PackageError{fails: edit the style of page using package etoolbox}}
+}
 
+\newcommand{\lheadbox}{
+\parbox{0.25\textwidth}{
+\centering
+{\zihao{-4}\bf 选择的题号} \\[8pt]
+{\Large \lnumcmthesis@tokens@tihao}
+}\vspace{5pt}}
+\newcommand{\cheadbox}{
+\parbox{0.5\textwidth}{
+\centering\zihao{-4}\bf
+2024\\
+辽宁省大学生数学建模竞赛\\
+摘要页
+}\vspace{5pt}}
+\newcommand{\rheadbox}{
+\parbox{0.25\textwidth}{
+\centering
+{\zihao{-4}\bf 校内编号} \\[8pt]
+{\Large \lnumcmthesis@tokens@bianhao}
+}\vspace{5pt}}
 \BeforeBeginEnvironment{abstract}{
+%% ---------- 摘要专用页的页眉页脚 ---------- %
+\thispagestyle{fancy}
+\fancyhf{}
+\lhead{\lheadbox}
+\chead{\cheadbox}
+\rhead{\rheadbox}
+\renewcommand{\headrulewidth}{1.5pt} %页眉线粗细
+\renewcommand{\footrulewidth}{0pt} %页脚线粗细
+\cfoot{\zihao{-5} \thepage} %页脚中部
+%% ======================================== %
 \begin{center}
-{\bf\zihao{-2}\ttleinMAINBODY}
+{\bf\zihao{3}\ttleinMAINBODY}
 \end{center}
+}
+
+\AfterEndEnvironment{abstract}{
+\pagestyle{plain} %摘要页之后设置为无页眉、有页脚的模式
 }
 
 \pretocmd{\bibliography}{
@@ -360,8 +315,17 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 }{\typeout{succeeds: edit the flexible spacing after the part of bibliography using package etoolbox}}{\PackageError{fails: edit the flexible spacing after the part of bibliography using package etoolbox}}
 
 \BeforeBeginEnvironment{thebibliography}{
+\addcontentsline{toc}{section}{参~ 考~ 文~ 献} %不能放在导言区
 \vspace*{0pt}
 }
+
+\AfterEndEnvironment{thebibliography}{
+\clearpage\vspace*{0pt}
+}{\typeout{succeeds: aft-style of env thebibliography}}{\typeout{fails: aft-style of env thebibliography}}
+
+\pretocmd{\appendixsec}{
+\vspace{10pt}
+}{\typeout{成功：附录环境下在下一个章节前前换页}}{\PackageError{失败：附录环境下在下一个章节前前换页}}
 % ======================================== %
 
 

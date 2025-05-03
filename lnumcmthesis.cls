@@ -76,8 +76,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % --------------- 页面样式 --------------- %
 \RequirePackage[table]{xcolor} %颜色定制
 \RequirePackage{fancyhdr} %定制页眉页脚
-\RequirePackage{geometry} %定制页面
-\geometry{top=3.0cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headsep=1.5cm}
+\RequirePackage[]{geometry} %定制页面
+\geometry{top=3.0cm, bottom=3.5cm, left=2.5cm, right=2.5cm}
 % ======================================== %
 
 
@@ -254,51 +254,103 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % ================================================================================ %
 
 
+% ------------------------- 封面页的设置 ------------------------- %
+%% 特质页眉的摘要页（2024年）
+\fancypagestyle{AbstractPageStyle}{
+  \fancyhf{} %将原有页眉内容清除
+  \fancyfoot[C]{\thepage}
+  \fancyhead[C]{\parbox{13em}{%
+  \centering\bfseries\zihao{-4} 2024\\[3pt]
+  辽宁省大学生数学建模竞赛\\[3pt]
+  摘要页\vspace{3pt}
+  }}
+  \fancyhead[L]{\parbox{6em}{%
+  \centering\bfseries {\zihao{-4}选择的题号}\\[3pt]
+  {\Large \lnumcmthesis@tokens@tihao}
+  }}
+  \fancyhead[R]{\parbox{6em}{%
+  \centering\bfseries {\zihao{-4}校内编号}\\[3pt]
+  {\Large \lnumcmthesis@tokens@bianhao}
+  }}
+  \renewcommand{\headrulewidth}{1pt}
+}
+  
+\setlength{\headheight}{46pt} % 编译器给的推荐长度；不能放进fancypagestyle中
+
+
+%% 经典版蓝字封面页
+% \newcommand{\makecoverpage}{
+%   \thispagestyle{empty} %【无页眉页脚】
+
+% ~\vspace{1ex}
+
+% \begin{flushright}
+% {\selectfont\fontsize{22}{0pt}\bf 封面}
+% \end{flushright}{}\vspace{44pt}
+
+% \begin{center}
+% {\selectfont\fontsize{22}{0pt}\bf\lnumcmthesis@tokens@yearinput 年辽宁省大学生数学建模论文}
+% \end{center}{}\vspace{42.0pt}
+
+% \begin{table}[H]
+%     \renewcommand\arraystretch{1.5}
+%     \centering
+%     \arrayrulecolor{coverblue}
+%     \begin{tabular}[lc]
+%       {
+%       >{\fontsize{10.5pt}{0pt}\selectfont}m{7.5cm}
+%       >{\centering\arraybackslash\fontsize{10.5pt}{0pt}\selectfont} m{5.5cm}
+%       }
+%       {\bf\color{coverblue}参赛学校(完整的学校全称，不含院系名)：} & {\bf\lnumcmthesis@tokens@school} \\
+%       \hline\vspace{21.0pt}
+%       {\bf\color{coverblue}参赛题号(从A/B/C中选择一项填写)：} & {\bf\lnumcmthesis@tokens@tihao} \\
+%       \hline\vspace{21.0pt}
+%       {\bf\color{coverblue}校内编号(与报名表上序号一致)：} & {\bf\lnumcmthesis@tokens@bianhao} \\
+%       \hline\vspace{21.0pt}
+%       {\bf\color{coverblue}队员姓名(打印并签名)：1、} & {\bf\lnumcmthesis@tokens@membera} \\
+%       \hline\vspace{21.0pt}
+%       \hspace{111.5pt} {\bf\color{coverblue}2、} & {\bf\lnumcmthesis@tokens@memberb} \\
+%       \hline\vspace{21.0pt}
+%       \hspace{111.5pt} {\bf\color{coverblue}3、} & {\bf\lnumcmthesis@tokens@memberc} \\
+%       \hline\vspace{21.0pt}
+%       {\bf\color{coverblue}指导教师或指导教师组负责人(打印并签名)：} & {\bf\lnumcmthesis@tokens@supervisor} \\
+%       \hline
+%       \multicolumn{2}{c}{{\color{coverblue}\kaishu（指导教师签名意味着对参赛队的行为和论文的真实性负责）}}
+%     \end{tabular}
+% \end{table}{}\vspace{31.5pt}
+
+% \begin{flushright}
+% {\zihao{-4}\underline{\quad\lnumcmthesis@tokens@yearinput\quad}年\underline{\quad\lnumcmthesis@tokens@monthinput\quad}月\underline{\quad\lnumcmthesis@tokens@dayinput\quad}日}
+% \end{flushright}
+% \arrayrulecolor{black} %使封面页之后的表格线颜色恢复正常
+% \newpage
+% } %【\newcommand{\makecoverpage}】
+% ================================================================================ %
+
+
 % --------------- 对sty,cls的命令的定制 --------------- %
 \RequirePackage{etoolbox}
 
 \AtBeginDocument{
 \renewcommand{\baselinestretch}{1.25}
+\pagestyle{plain} %除摘要页以外的页眉页脚样式
 }
 
-\newcommand{\lheadbox}{
-\parbox{0.25\textwidth}{
-\centering
-{\zihao{-4}\bf 选择的题号} \\[8pt]
-{\Large \lnumcmthesis@tokens@tihao}
-}\vspace{5pt}}
-\newcommand{\cheadbox}{
-\parbox{0.5\textwidth}{
-\centering\zihao{-4}\bf
-2024\\
-辽宁省大学生数学建模竞赛\\
-摘要页
-}\vspace{5pt}}
-\newcommand{\rheadbox}{
-\parbox{0.25\textwidth}{
-\centering
-{\zihao{-4}\bf 校内编号} \\[8pt]
-{\Large \lnumcmthesis@tokens@bianhao}
-}\vspace{5pt}}
-\BeforeBeginEnvironment{abstract}{
 %% ---------- 摘要专用页的页眉页脚 ---------- %
-\thispagestyle{fancy}
-\fancyhf{}
-\lhead{\lheadbox}
-\chead{\cheadbox}
-\rhead{\rheadbox}
-\renewcommand{\headrulewidth}{1.5pt} %页眉线粗细
-\renewcommand{\footrulewidth}{0pt} %页脚线粗细
-\cfoot{\zihao{-5} \thepage} %页脚中部
-%% ======================================== %
+\AddToHook{env/abstract/before}{
+\thispagestyle{AbstractPageStyle}
 \begin{center}
-{\bf\zihao{3}\ttleinMAINBODY}
+\bfseries\zihao{3}\ttleinMAINBODY
 \end{center}
 }
+%% ======================================== %
 
-\AfterEndEnvironment{abstract}{
-\pagestyle{plain} %摘要页之后设置为无页眉、有页脚的模式
+%% ---------- 正文的样式细节调整 ---------- %
+\newcommand{\setupOFmainbody}{
+  \setlength{\headheight}{1ex}
+  \addtolength{\footskip}{1cm}
 }
+%% ======================================== %
 
 \pretocmd{\bibliography}{
 \addcontentsline{toc}{section}{参~ 考~ 文~ 献} %不能放在导言区

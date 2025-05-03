@@ -229,11 +229,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 % --------------- 附录与自定义附录 --------------- %
 \RequirePackage{appendix} %设置附录样式
-
-% 自定义附录章标题、在目录中的样式
-\newcounter{appendixcounting} %定义专属于附录的计数器
-\addtocounter{appendixcounting}{1} %附录标题计数器的初始值设为1
-\newcommand{\appendixsec}[1]{ \zihao{4}{\section*{附录\arabic{appendixcounting}\quad #1}}\addcontentsline{toc}{section}{附录\theappendixcounting\quad #1}\addtocounter{appendixcounting}{1}} %注：一定要先添加到目录、再将计数器值增1
 % ======================================== %
 
 
@@ -322,10 +317,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \AfterEndEnvironment{thebibliography}{
 \clearpage\vspace*{0pt}
 }{\typeout{succeeds: aft-style of env thebibliography}}{\typeout{fails: aft-style of env thebibliography}}
-
-\pretocmd{\appendixsec}{
-\vspace{10pt}
-}{\typeout{成功：附录环境下在下一个章节前前换页}}{\PackageError{失败：附录环境下在下一个章节前前换页}}
 % ======================================== %
 
 

@@ -9,10 +9,10 @@
 
 \begin{equation}\label{equ:麦克斯韦方程组}
 \begin{cases}
-\oint_{\bk{S}}\bk{D}\cdot\diff\bk{S} &= q_0, \\
-\oint_{\bk{S}}\bk{B}\cdot\diff\bk{S} &= 0, \\
-\oint_{\bk{l}}\bk{E}\cdot\diff\bk{l} &= -\iint_{\bk{S}}\frac{\partial \bk{B}}{\partial t}\cdot\diff\bk{S}, \\
-\oint_{\bk{l}}\bk{H}\cdot\diff\bk{l} &= \bk{I}_0 + \iint_{\bk{S}}\frac{\partial \bk{D}}{\partial t}\cdot\diff\bk{S}
+\oint_{\boldsymbol{S}}\boldsymbol{D}\cdot\diff\boldsymbol{S} &= q_0, \\
+\oint_{\boldsymbol{S}}\boldsymbol{B}\cdot\diff\boldsymbol{S} &= 0, \\
+\oint_{\boldsymbol{l}}\boldsymbol{E}\cdot\diff\boldsymbol{l} &= -\iint_{\boldsymbol{S}}\frac{\partial \boldsymbol{B}}{\partial t}\cdot\diff\boldsymbol{S}, \\
+\oint_{\boldsymbol{l}}\boldsymbol{H}\cdot\diff\boldsymbol{l} &= \boldsymbol{I}_0 + \iint_{\boldsymbol{S}}\frac{\partial \boldsymbol{D}}{\partial t}\cdot\diff\boldsymbol{S}
 \end{cases}
 \end{equation}
 
@@ -20,15 +20,13 @@
 
 \subsubsection{结果求解与分析}
 
-%\fourthsection{四级标题名称} %必要情况下可能会使用四级标题
-
 % -------------------- 问题 2 -------------------- %
 
 \subsection{对问题2的求解}
 
 {\bf 伪代码的使用示例如下所示。}
 
-\begin{algorithm}%[H] %若想要使得该伪代码显示在当前文本下方，则添加可选参数H
+\begin{algorithm}[!ht] %若想要使得该伪代码显示在当前文本下方，则添加可选参数H
 \SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up} % 定义快捷变量，后续使用时只需：反斜杠+变量名
 \SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress} % 定义函数，后续使用时只需：反斜杠+函数名
 \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出} %此处可自定义输入、输入的名称格式
@@ -89,7 +87,7 @@ x_1^{n-1} & x_2^{n-1} & \ldots & x_n^{n-1}
 \subsection{对问题4的求解}
 
 \begin{gather}\label{equ:规划模型}
-\min\quad{f(\bk{x})} \\
+\min\quad{f(\boldsymbol{x})} \\
 \text{s.t.}\quad\begin{cases}
     a \leq x_i\leq b &, j=1,2,\cdots ,\alpha \\
 	\max\limits_{j=1,2,\cdots ,\alpha}{\{A_{i,j}\}} \leq 24 &, i=1,2,\cdots ,\beta_1\\

@@ -40,27 +40,27 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 
 % --------------- ctex宏集设置 --------------- %
-\RequirePackage[UTF8, heading=true, zihao = -4]{ctex}
+\RequirePackage[UTF8,heading=true,zihao=-4]{ctex}
 \ctexset{
-  abstractname = {\zihao{-3}摘~ 要},
-  bibname = \hfill{\zihao{3}参~ 考~ 文~ 献}\hfill,
+  abstractname = {\zihao{-4}摘~ 要},
+  bibname = \hfill{\zihao{4}参~ 考~ 文~ 献}\hfill,
   section = {
-    format = {\centering\zihao{3}\bfseries},
+    format = {\centering\bfseries},
     name = {,、},
-    number = \zhnumber{\thesection},
-    beforeskip=15pt,
-    afterskip=10pt,
+    number = \chinese{section},
+    beforeskip=15bp,
+    afterskip=10bp,
     aftername={},
   },
   subsection={
-    format={\zihao{4}\bfseries},
-	beforeskip=15pt,
-    afterskip=10pt,
+    format={\bfseries},
+    beforeskip=15bp,
+    afterskip=10bp,
   },
   subsubsection={
-    format={\zihao{-4}\bfseries},
-	beforeskip=15pt,
-    afterskip=10pt,
+    format={\bfseries},
+    beforeskip=15bp,
+    afterskip=10bp,
   }
 }
 % ======================================== %
@@ -75,15 +75,36 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 % --------------- 页面样式 --------------- %
 \RequirePackage[table]{xcolor} %颜色定制
+\definecolor{keywordincode}{RGB}{000,000,255}
+\definecolor{stringincode}{RGB}{128,128,000}
+\definecolor{commentincode}{RGB}{106,153,85}
+
 \RequirePackage{fancyhdr} %定制页眉页脚
-\RequirePackage[]{geometry} %定制页面
+\RequirePackage{geometry} %定制页面
 \geometry{top=3.0cm, bottom=3.5cm, left=2.5cm, right=2.5cm}
 % ======================================== %
 
 
 % --------------- 字体 --------------- %
 \RequirePackage{fontspec}
-\setmainfont{Times New Roman} %英文字体设置
+%% --------- 英文字体设置 ----------- %
+\IfFontExistsTF{Times New Roman}{
+    \setmainfont{Times New Roman}
+  }{
+    \IfFontExistsTF{./misc/times.ttf}{
+      \setmainfont{times}[
+        Path={./misc/},
+        Extension = .ttf,
+        UprightFont = times,
+        BoldFont = timesbd,
+        ItalicFont = timesi,
+        BoldItalicFont = timesbi,
+      ]
+    }{
+      \setmainfont{TeX Gyre Termes} %发行版内置字体
+    }
+  }
+%% ================================== %
 % ======================================== %
 
 
@@ -91,27 +112,34 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{abstract}
 \setlength{\absleftindent}{0pt} %取消左自动缩进
 \setlength{\absrightindent}{0pt} %取消右自动缩进
-\newcommand{\keywords}[1]{\vspace{\baselineskip}{}\noindent\bf 关键词: #1} %插入关键词
+\renewcommand{\abstracttextfont}{\normalsize} %修改摘要内容的字号
+\newcommand{\keywords}[1]{\vspace{\baselineskip}{}\noindent\bfseries 关键词: #1} %插入关键词
 % ======================================== %
 
 
 % --------------- 列表环境 --------------- %
 \RequirePackage[inline]{enumitem}
-\setlist{leftmargin=0pt, itemindent=2\parindent, itemsep=0pt, parsep=0pt}
 % ======================================== %
 
 
 % --------------- 数学环境 --------------- %
-\RequirePackage{amsmath, amssymb, mathrsfs} %数学公式三件套
-\numberwithin{equation}{section} %将一级章节编号添加到公式编号
+\RequirePackage{amsmath,amssymb,mathrsfs} %数学公式三件套
 \RequirePackage{siunitx} %SI制单位
-\newcommand\bk{\boldsymbol}
-\newcommand\lt{\left}
-\newcommand\rt{\right}
 \DeclareMathOperator{\diff}{\,\mathrm{d}\hspace{-1.5pt}} %微分算子
-\newcommand\bfunit[1]{\unit{\bf{#1}}} %加粗的数值单位
 
 \RequirePackage{amsthm}
+
+\renewcommand{\proofname}{证明}
+\renewenvironment{proof}[1][\proofname]{\par
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax
+\trivlist
+\item\relax
+{\hspace{\parindent}\rmfamily\bfseries #1\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+\popQED\endtrivlist\@endpefalse
+}
+
 \newtheoremstyle{newthmstyle}
   {3pt} %Space above
   {3pt} %Space below
@@ -122,15 +150,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   {1.0em} %Space after theorem head
   {} %Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{newthmstyle}
-\newtheorem{Definition}{定义}[section]
-\newtheorem{Proposition}{命题}[section]
-\newtheorem{Lemma}{引理}[section]
-\newtheorem{Theorem}{定理}[section]
-\newtheorem{Example}{例}[section]
-\newtheorem{Problem}{问题}[section]
-\newtheorem{Corollary}{推论}[section]
-\newtheorem{Remark}{注}[section]
-\renewcommand{\proofname}{\zihao{-4}\bfseries 证明}
+\newtheorem{Definition}{定义}
+\newtheorem{Proposition}{命题}
+\newtheorem{Lemma}{引理}
+\newtheorem{Theorem}{定理}
+\newtheorem{Example}{例}
+\newtheorem{Problem}{问题}
+\newtheorem{Corollary}{推论}
+\newtheorem{Remark}{注}
 % ======================================== %
 
 
@@ -143,35 +170,26 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   basicstyle=\small\ttfamily, %整体的字号、字体
   stringstyle=\ttfamily, %字符串样式
   backgroundcolor=\color{gray!10}, %背景颜色
-  frame=trbl, %显示各方向的代码框线条
-  frameround=tttt, %设置代码框各棱角的形状
   breaklines=true, %自动断行
   showstringspaces=false, %取消特别的字符间距
   framexleftmargin=5pt, %内部左边距
+  frame=trbl, %显示各方向的代码框线条
+  frameround=tttt, %设置代码框各棱角的形状
+  keywordstyle=\color{keywordincode}, %关键字样式
+  stringstyle=\color{stringincode}, %字符串样式
+  commentstyle=\color{commentincode}, %注释样式
 }
 % ======================================== %
 
 
 % --------------- 伪代码 --------------- %
-\RequirePackage[ruled, lined]{algorithm2e}
+\RequirePackage[ruled,lined]{algorithm2e}
 \renewcommand{\algorithmcfname}{算法}
 % ======================================== %
 
 
 % --------------- 标题样式：章、节、条、款、项 --------------- %
 \RequirePackage{titlesec}
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-\titleformat{\paragraph}
-  {\normalsize\bfseries} %字体
-  {\theparagraph} %标题前的标签
-  {1em} %标题和标签之间的间距
-  {} %标题前没有额外的命令或内容
-\titlespacing{\paragraph}
-  {0pt} %标题左间距
-  {0.5ex \@plus 1ex \@minus.2ex} %标题上间距
-  {0.5ex \@plus .2ex} %标题下间距
-\newcommand{\fourthsection}[1]{\paragraph{#1}} %将命令\paragraph改名为四级标题
 % ======================================== %
 
 
@@ -180,8 +198,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \DeclareCaptionLabelSeparator{doublespace}{~~}
 \captionsetup{font=small, labelsep=doublespace, labelfont=bf, textfont=bf}
 \RequirePackage[labelformat=brace]{subcaption} %(与 subfigure 宏包冲突)也能提供 subfigure 环境（需设置宽度），并使环境中的标题变成副标题样式
-\numberwithin{figure}{section} %numberwithin命令必须放在amsmath宏包之后
-\numberwithin{table}{section}
 % ======================================== %
 
 
@@ -219,11 +235,11 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 
 % --------------- 参考文献 --------------- %
-\RequirePackage[numbers,square,comma]{natbib}
+\RequirePackage[numbers,square,comma,sort&compress]{natbib}
 \RequirePackage{gbt7714}
 \setlength{\bibsep}{0ex}
 \bibliographystyle{gbt7714-numerical}
-\newcommand{\upcite}[1]{$^{\mbox{\footnotesize\cite{#1}}}${}} % 上标形式的引用
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} % 上标形式的引用
 % ======================================== %
 
 
@@ -234,7 +250,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 % ------------------------- 关于论文信息的全局变量导入 ------------------------- %
 \RequirePackage{ifthen} %【引入条件判断逻辑】
-\RequirePackage{zhnumber} %【中文数字】
 %% -------------------- 图片&表格 -------------------- %
 \RequirePackage{array} %【与表格相关】
 %% ============================================================ %
@@ -332,11 +347,15 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{etoolbox}
 
 \AtBeginDocument{
-\renewcommand{\baselinestretch}{1.25}
 \pagestyle{plain} %除摘要页以外的页眉页脚样式
+  %% ----- 正文行距 ----- %
+  % 关键系数k(基础行距换算系数)：1.296875/1.2
+  % 实际的伸缩因子：
+  % 1.2倍行距: 1.2*k =[approximately]= 1.297
+  \linespread{1.297}\selectfont
 }
 
-%% ---------- 摘要专用页的页眉页脚 ---------- %
+%% ---------- 摘要专用页的样式&内容 ---------- %
 \AddToHook{env/abstract/before}{
 \thispagestyle{AbstractPageStyle}
 \begin{center}
@@ -352,23 +371,30 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 }
 %% ======================================== %
 
-\pretocmd{\bibliography}{
-\addcontentsline{toc}{section}{参~ 考~ 文~ 献} %不能放在导言区
-\vspace*{0pt}
-}{\typeout{succeeds: edit the style of the part of bibliography using package etoolbox}}{\PackageError{fails: edit the style of the part of bibliography using package etoolbox}}
-
-\apptocmd{\bibliography}{
-\vspace*{0pt}
-}{\typeout{succeeds: edit the flexible spacing after the part of bibliography using package etoolbox}}{\PackageError{fails: edit the flexible spacing after the part of bibliography using package etoolbox}}
-
-\BeforeBeginEnvironment{thebibliography}{
-\addcontentsline{toc}{section}{参~ 考~ 文~ 献} %不能放在导言区
-\vspace*{0pt}
+\AddToHook{env/thebibliography/before}{
+  \phantomsection
+  \addcontentsline{toc}{section}{参考文献}
 }
 
-\AfterEndEnvironment{thebibliography}{
-\clearpage\vspace*{0pt}
-}{\typeout{succeeds: aft-style of env thebibliography}}{\typeout{fails: aft-style of env thebibliography}}
+%% ------- 设置附录样式 --------- %
+\AddToHook{env/appendices/begin}[style_in_appendix]{
+  \ctexset{
+    section = {
+      format = {\bfseries},
+      name = {附录~,},
+      number = {\arabic{section}},
+      aftername = {\hspace{1em}},
+      beforeskip=0.5ex,
+      afterskip=0.5ex,
+    }
+  }
+  \zihao{5}
+}
+\AddToHook{env/appendices/after}{
+  \RemoveFromHook{env/appendices/begin}[style_in_appendix]
+}
+%% ======================================== %
+
 % ======================================== %
 
 

@@ -270,23 +270,26 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 
 % ------------------------- 封面页的设置 ------------------------- %
-%% 特质页眉的摘要页（2024年）
+%% 摘要页（2024--）
+\fancyheadwidth[C][T]{13em}
+\fancyheadwidth[L][T]{9em}
+\fancyheadwidth[R][T]{9em}
 \fancypagestyle{AbstractPageStyle}{
   \fancyhf{} %将原有页眉内容清除
   \fancyfoot[C]{\thepage}
-  \fancyhead[C]{\parbox{13em}{%
-  \centering\bfseries\zihao{-4} 2024\\[3pt]
+  \fancyhead[C]{%
+  \centering\bfseries\zihao{-4} \number\year\\[3pt]
   辽宁省大学生数学建模竞赛\\[3pt]
   摘要页\vspace{3pt}
-  }}
-  \fancyhead[L]{\parbox{6em}{%
+  }
+  \fancyhead[L]{%
   \centering\bfseries {\zihao{-4}选择的题号}\\[3pt]
   {\Large \lnumcmthesis@tokens@tihao}
-  }}
-  \fancyhead[R]{\parbox{6em}{%
+  }
+  \fancyhead[R]{%
   \centering\bfseries {\zihao{-4}校内编号}\\[3pt]
   {\Large \lnumcmthesis@tokens@bianhao}
-  }}
+  }
   \renewcommand{\headrulewidth}{1pt}
 }
   
